@@ -86,6 +86,7 @@ import { TTotpServiceFactory } from "@app/services/totp/totp-service";
 import { TUserDALFactory } from "@app/services/user/user-dal";
 import { TUserServiceFactory } from "@app/services/user/user-service";
 import { TUserEngagementServiceFactory } from "@app/services/user-engagement/user-engagement-service";
+import { TUserSecretsLoginCredentialServiceServiceFactory } from "@app/services/user-secrets-login-credential-service/user-secrets-login-credential-service-service";
 import { TWebhookServiceFactory } from "@app/services/webhook/webhook-service";
 import { TWorkflowIntegrationServiceFactory } from "@app/services/workflow-integration/workflow-integration-service";
 
@@ -204,6 +205,7 @@ declare module "fastify" {
       externalGroupOrgRoleMapping: TExternalGroupOrgRoleMappingServiceFactory;
       projectTemplate: TProjectTemplateServiceFactory;
       totp: TTotpServiceFactory;
+      userSecretsLoginCredential: TUserSecretsLoginCredentialServiceServiceFactory;
     };
     // this is exclusive use for middlewares in which we need to inject data
     // everywhere else access using service layer

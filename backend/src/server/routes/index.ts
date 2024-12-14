@@ -209,6 +209,8 @@ import { userDALFactory } from "@app/services/user/user-dal";
 import { userServiceFactory } from "@app/services/user/user-service";
 import { userAliasDALFactory } from "@app/services/user-alias/user-alias-dal";
 import { userEngagementServiceFactory } from "@app/services/user-engagement/user-engagement-service";
+import { userSecretsLoginCredentialServiceDALFactory } from "@app/services/user-secrets-login-credential-service/user-secrets-login-credential-service-dal";
+import { userSecretsLoginCredentialServiceServiceFactory } from "@app/services/user-secrets-login-credential-service/user-secrets-login-credential-service-service";
 import { webhookDALFactory } from "@app/services/webhook/webhook-dal";
 import { webhookServiceFactory } from "@app/services/webhook/webhook-service";
 import { workflowIntegrationDALFactory } from "@app/services/workflow-integration/workflow-integration-dal";
@@ -354,6 +356,7 @@ export const registerRoutes = async (
   const projectSlackConfigDAL = projectSlackConfigDALFactory(db);
   const workflowIntegrationDAL = workflowIntegrationDALFactory(db);
   const totpConfigDAL = totpConfigDALFactory(db);
+  const userSecretsLoginCredentialServiceDAL = userSecretsLoginCredentialServiceDALFactory(db);
 
   const externalGroupOrgRoleMappingDAL = externalGroupOrgRoleMappingDALFactory(db);
 
@@ -1301,6 +1304,12 @@ export const registerRoutes = async (
     permissionService
   });
 
+  const userSecretsLoginCredentialService = userSecretsLoginCredentialServiceServiceFactory({
+    userSecretsLoginCredentialServiceDAL,
+    permissionService,
+    kmsService
+  });
+
   const externalGroupOrgRoleMappingService = externalGroupOrgRoleMappingServiceFactory({
     permissionService,
     licenseService,
@@ -1402,7 +1411,8 @@ export const registerRoutes = async (
     migration: migrationService,
     externalGroupOrgRoleMapping: externalGroupOrgRoleMappingService,
     projectTemplate: projectTemplateService,
-    totp: totpService
+    totp: totpService,
+    userSecretsLoginCredential: userSecretsLoginCredentialService
   });
 
   const cronJobs: CronJob[] = [];
