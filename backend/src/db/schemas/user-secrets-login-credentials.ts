@@ -5,13 +5,17 @@
 
 import { z } from "zod";
 
+import { zodBuffer } from "@app/lib/zod";
+
 import { TImmutableDBKeys } from "./models";
 
 export const UserSecretsLoginCredentialsSchema = z.object({
   id: z.string().uuid(),
   name: z.string().nullable().optional(),
-  usernameEncrypted: z.string().nullable().optional(),
-  passwordEncrypted: z.string().nullable().optional()
+  username: zodBuffer,
+  password: zodBuffer,
+  userId: z.string().uuid(),
+  orgId: z.string().uuid()
 });
 
 export type TUserSecretsLoginCredentials = z.infer<typeof UserSecretsLoginCredentialsSchema>;

@@ -1,4 +1,5 @@
 import { registerProjectTemplateRouter } from "@app/ee/routes/v1/project-template-router";
+import { registerUserSecretsRouter } from "@app/server/routes/v1/user-secrets-router";
 
 import { registerAccessApprovalPolicyRouter } from "./access-approval-policy-router";
 import { registerAccessApprovalRequestRouter } from "./access-approval-request-router";
@@ -96,4 +97,5 @@ export const registerV1EERoutes = async (server: FastifyZodProvider) => {
   });
 
   await server.register(registerProjectTemplateRouter, { prefix: "/project-templates" });
+  await server.register(registerUserSecretsRouter, { prefix: "/user-secrets" });
 };
