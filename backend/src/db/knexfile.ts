@@ -12,7 +12,7 @@ dotenv.config({
 dotenv.config({
   path: path.join(__dirname, "../../../.env")
 });
-
+console.log(process.env.DB_PORT);
 export default {
   development: {
     client: "postgres",

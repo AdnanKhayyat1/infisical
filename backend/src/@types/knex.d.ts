@@ -339,6 +339,9 @@ import {
   TUserGroupMembershipInsert,
   TUserGroupMembershipUpdate,
   TUsers,
+  TUserSecretsLoginCredentials,
+  TUserSecretsLoginCredentialsInsert,
+  TUserSecretsLoginCredentialsUpdate,
   TUsersInsert,
   TUsersUpdate,
   TWebhooks,
@@ -819,6 +822,11 @@ declare module "knex/types/tables" {
       TSlackIntegrations,
       TSlackIntegrationsInsert,
       TSlackIntegrationsUpdate
+    >;
+    [TableName.UserSecretsLoginCredentials]: KnexOriginal.CompositeTableType<
+      TUserSecretsLoginCredentials,
+      TUserSecretsLoginCredentialsInsert,
+      TUserSecretsLoginCredentialsUpdate
     >;
     [TableName.ProjectSlackConfigs]: KnexOriginal.CompositeTableType<
       TProjectSlackConfigs,
